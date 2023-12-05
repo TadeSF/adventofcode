@@ -86,7 +86,7 @@ def main_1():
         print(f"Now handeling: {number}")
         result = number
         for map in maps:
-            result = map.check_mapping(result)
+            result, _ = map.check_mapping(result)
         
         if result < lowest_result:
             lowest_result = result
@@ -131,4 +131,4 @@ def main_2():
 
 
 
-main_2()
+main_1()
