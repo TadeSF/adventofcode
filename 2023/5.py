@@ -128,7 +128,4 @@ def main_2():
     print(f"Lowest result: {lowest_result}")
 
 
-
-
-
 main_1()
