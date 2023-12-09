@@ -2,9 +2,7 @@ from enum import Enum
 from typing import Tuple
 import sys
 
-with open(sys.argv[1], "r") as file:
-    data = [line.replace("\n", "").strip() for line in file.readlines()]
-
+from misc import start_program
 
 class Type(Enum):
     HIGH_CARD = 1
@@ -84,14 +82,14 @@ class Hand:
         return self.bid * rank
 
 
-def main_1():
+def main_1(data):
     global hands
     for line in data:
         cards, bid = line.split(" ")
         hands.append(Hand([cards[0], cards[1], cards[2], cards[3], cards[4]], int(bid)))
 
 
-def main_2():
+def main_2(data):
     global hands
     for line in data:
         cards, bid = line.split(" ")
@@ -107,12 +105,7 @@ def main_2():
 if __name__ == "__main__":
     hands = []
 
-    if sys.argv[2] == "main_1":
-        main_1()
-    elif sys.argv[2] == "main_2":
-        main_2()
-    else:
-        print("Missing second argument: main_1 or main_2")
+    start_program([main_1, main_2])
 
     sorted_hands = sorted(
         hands,

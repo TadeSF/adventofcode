@@ -1,10 +1,8 @@
 from typing import List
 from tqdm import tqdm
-
-def load_data() -> list:
-    with open('5.txt', 'r') as file:
-        return [line.replace("\n", "").strip() for line in file.readlines()]
     
+from misc import start_program
+
 
 class SingleMapping:
     def __init__(self, source, destination, length) -> None:
@@ -77,7 +75,7 @@ def parse_for_mapping(raw_data: List[str]):
     return seed_numbers, maps
 
 
-def main_1():
+def main_1(data):
     seed_numbers, maps = parse_for_mapping(load_data())
 
     lowest_result = 10000000000000000000000
@@ -93,7 +91,7 @@ def main_1():
 
     print(f"Lowest result: {lowest_result}")
 
-def main_2():
+def main_2(data):
     seed_numbers_raw, maps = parse_for_mapping(load_data())
 
     lowest_result = 10000000000000000000000
@@ -128,4 +126,5 @@ def main_2():
     print(f"Lowest result: {lowest_result}")
 
 
-main_1()
+if __name__ == "__main__":
+    start_program([main_1, main_2])

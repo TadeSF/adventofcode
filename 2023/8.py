@@ -2,9 +2,7 @@ import math
 import sys
 import time
 from typing import List, Tuple
-
-with open(sys.argv[1], "r") as file:
-    data = [line.replace("\n", "").strip() for line in file.readlines()]
+from misc import start_program
 
 class Instruction:
     def __init__(self, origin: str, nodes: List[str]) -> None:
@@ -66,7 +64,7 @@ def parse_data(data: List[str]) -> Tuple[str, List[Instruction]]:
     
     
     
-def main_1():
+def main_1(data: List[str]):
     steps = 0
     
     directions, map_with_instructions = parse_data(data)
@@ -79,7 +77,7 @@ def main_1():
     print("Steps:", steps)
 
 
-def main_2():
+def main_2(data: List[str]):
     steps = 0
     pathways: List[Path] = []
     path_outcome_steps: List[int] = []
@@ -102,9 +100,4 @@ def main_2():
     
 
 if __name__ == "__main__":
-    if len(sys.argv) < 3:
-        print("Missing second argument (task_number): 1 or 2\npython3 8.py <input_file> <task_number>")
-    elif sys.argv[2] == "1":
-        main_1()
-    elif sys.argv[2] == "2":
-        main_2()
+    start_program([main_1, main_2])

@@ -1,12 +1,8 @@
 import math
 import re
 
+from misc import start_program
 
-def load_data() -> list:
-    with open('4.txt', 'r') as file:
-        return [line.replace("\n", "").strip() for line in file.readlines()]
-    
-lines = load_data()
 
 cards = []
 
@@ -53,8 +49,8 @@ class Card:
     def get_number_copies(self):
         return self.number_copies
 
-def main_1():
-    for line in lines:
+def main_1(data):
+    for line in data:
         cards.append(Card(line))
     
     sum_points = 0
@@ -63,8 +59,8 @@ def main_1():
     print(sum_points)
 
 
-def main_2():
-    for line in lines:
+def main_2(data):
+    for line in data:
         cards.append(Card(line))
 
     sum_cards = 0
@@ -84,4 +80,5 @@ def main_2():
     print(sum_cards)
 
 
-main_2()
+if __name__ == "__main__":
+    start_program([main_1, main_2])

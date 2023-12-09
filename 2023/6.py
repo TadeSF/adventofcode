@@ -1,9 +1,7 @@
 from typing import List
 import sys
 
-
-with open(sys.argv[1], 'r') as file:
-    data = [line.replace("\n", "").strip() for line in file.readlines()]
+from misc import start_program
 
 
 class Race:
@@ -26,7 +24,7 @@ class Race:
 
 
 
-def main_1():
+def main_1(data):
     times = []
     records = []
     races: List[Race] = []
@@ -51,7 +49,7 @@ def main_1():
     print(possibilities)
 
 
-def main_2():
+def main_2(data):
     time = int(data[0].split(":")[1].replace(" ", ""))
     record = int(data[1].split(":")[1].replace(" ", ""))
     race: Race = Race(time, record)
@@ -60,9 +58,4 @@ def main_2():
 
 
 if __name__ == "__main__":
-    if sys.argv[2] == "main_1":
-        main_1()
-    elif sys.argv[2] == "main_2":
-        main_2()
-    else:
-        print("Missing second argument: main_1 or main_2")
+    startProgram([main_1, main_2])
